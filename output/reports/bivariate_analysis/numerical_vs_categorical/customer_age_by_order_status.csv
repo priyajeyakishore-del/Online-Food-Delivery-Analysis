@@ -1,0 +1,3 @@
+Numerical_Column,Categorical_Column,Order_Status,Count,Mean,Median,Std,Minimum,Maximum
+Customer_Age,Order_Status,Cancelled,15036,39.035913806863526,39.0,8.654905537320808,18.0,60.0
+Customer_Age,Order_Status,Delivered,84964,38.97985028953439,39.0,8.755302091297635,18.0,60.0

@@ -1,0 +1,898 @@
+DATA CLEANING REPORT
+============================================================
+
+======================================================================
+ORDER OUTCOME DATA QUALITY ANALYSIS
+======================================================================
+
+======================================================================
+Column: Order_Status
+======================================================================
+
+Missing count: 0
+Missing percentage: 0.0 %
+
+Unique categories: 2
+
+Category frequencies:
+Order_Status
+Delivered    84964
+Cancelled    15036
+Name: count, dtype: int64
+
+======================================================================
+Column: Cancellation_Reason
+======================================================================
+
+Missing count: 90969
+Missing percentage: 90.97 %
+
+Unique categories: 3
+
+Category frequencies:
+Cancellation_Reason
+NaN                   90969
+Late Delivery          3059
+Customer Cancelled     2993
+Restaurant Issue       2979
+Name: count, dtype: int64
+
+Cancellation reason imputation:
+Delivered orders filled: 84964
+Cancelled orders filled: 6005
+
+======================================================================
+ORDER OUTCOME VALIDATION
+======================================================================
+
+Cleaned categories: Order_Status
+Order_Status
+Delivered    84964
+Cancelled    15036
+Name: count, dtype: int64
+
+Cleaned categories: Cancellation_Reason
+Cancellation_Reason
+Not Applicable        84964
+Unknown                6005
+Late Delivery          3059
+Customer Cancelled     2993
+Restaurant Issue       2979
+Name: count, dtype: int64
+
+Order Status vs Cancellation Reason:
+Cancellation_Reason  Customer Cancelled  Late Delivery  Not Applicable  Restaurant Issue  Unknown     All
+Order_Status                                                                                             
+Cancelled                          2993           3059               0              2979     6005   15036
+Delivered                             0              0           84964                 0        0   84964
+All                                2993           3059           84964              2979     6005  100000
+
+Cancelled orders still missing a reason: 0
+Delivered orders with an actual cancellation reason: 0
+
+Remaining missing values: Order_Status           0
+Cancellation_Reason    0
+dtype: int64
+
+Order outcome cleaning completed successfully.
+
+======================================================================
+PAYMENT MODE CLEANING
+======================================================================
+
+Missing values before cleaning:
+19,911
+Missing percentage before cleaning: 19.91%
+
+Payment distribution before filling:
+Payment_Mode
+Card      20094
+Wallet    20086
+COD       19977
+UPI       19932
+<NA>      19911
+Name: count, dtype: int64[pyarrow]
+
+Missing values filled with Unknown:
+19911
+
+Missing values after cleaning:
+0
+
+Payment distribution after cleaning:
+Payment_Mode
+Card       20094
+Wallet     20086
+COD        19977
+UPI        19932
+Unknown    19911
+Name: count, dtype: int64[pyarrow]
+
+Payment distribution percentage:
+Payment_Mode
+Card       20.09
+Wallet     20.09
+COD        19.98
+UPI        19.93
+Unknown    19.91
+Name: proportion, dtype: double[pyarrow]
+
+Payment mode cleaning completed successfully.
+
+======================================================================
+CUSTOMER_ID DATA QUALITY ANALYSIS
+======================================================================
+
+Missing customer IDs:
+0
+
+Unique non-missing customer IDs:
+8999
+
+Duplicate customer ID rows (including missing values):
+91001
+
+Duplicate non-missing customer IDs:
+91001
+
+======================================================================
+CUSTOMER_AGE CLEANING
+======================================================================
+
+Missing ages before cleaning:
+50093
+
+Age statistics before cleaning:
+count    49907.000000
+mean        38.976516
+std         12.372157
+min         18.000000
+25%         28.000000
+50%         39.000000
+75%         50.000000
+max         60.000000
+Name: Customer_Age, dtype: float64
+
+Invalid ages (below 18 or above 100):
+0
+
+Median age used for imputation: 39.0
+
+Missing ages after cleaning:
+0
+
+Customer Gender Cleaning Summary
+========================================
+Customer_Gender
+Other      25135
+Female     25031
+Male       24978
+Unknown    24856
+Name: count, dtype: int64[pyarrow]
+
+Missing values: 0
+
+======================================================================
+CUSTOMER INFORMATION CLEANING SUMMARY
+======================================================================
+
+Missing values:
+Customer_ID        0
+Customer_Age       0
+Customer_Gender    0
+dtype: int64
+
+Data types:
+Customer_ID            str
+Customer_Age       float64
+Customer_Gender     string
+dtype: object
+
+Customer information cleaning completed successfully.
+
+============================================================
+LOCATION DATA CLEANING
+============================================================
+
+Missing values before cleaning:
+City    16726
+Area    16685
+dtype: int64
+
+Missing values after cleaning:
+City    0
+Area    0
+dtype: int64
+
+City distribution:
+City
+Hyderabad    16884
+Bangalore    16732
+Unknown      16726
+Delhi        16695
+Mumbai       16493
+Chennai      16470
+Name: count, dtype: int64[pyarrow]
+
+Area distribution:
+Area
+South      16725
+Unknown    16685
+North      16675
+West       16653
+East       16643
+Central    16619
+Name: count, dtype: int64[pyarrow]
+
+Location cleaning completed successfully.
+
+Financial Cleaning Summary
+==================================================
+
+Missing values:
+Order_Value         0
+Discount_Applied    0
+Profit_Margin       0
+dtype: int64
+
+Negative values:
+Order_Value             0
+Discount_Applied        0
+Profit_Margin       27733
+dtype: int64
+
+Financial cleaning completed.
+
+============================================================
+FINAL AMOUNT CLEANING SUMMARY
+============================================================
+Missing values before cleaning: 55697
+Values calculated: 55697
+Negative values corrected: 773
+Remaining missing values: 0
+Remaining negative values: 0
+
+Final_Amount data type: float64
+
+======================================================================
+RESTAURANT DATA CLEANING AND VALIDATION
+======================================================================
+Original shape: (100000, 25)
+
+2. RESTAURANT ID CLEANING
+--------------------------------------------------
+Missing IDs before cleaning: 0
+Missing IDs after cleaning: 0
+Unique restaurant IDs: 900
+
+3. RESTAURANT NAME CLEANING
+--------------------------------------------------
+Missing names before cleaning: 0
+Unknown names after cleaning: 0
+
+4. CUISINE CLEANING
+--------------------------------------------------
+Missing cuisines before cleaning: 16885
+Unknown cuisines after cleaning: 16885
+
+5. RESTAURANT RATING CLEANING
+--------------------------------------------------
+Invalid text ratings: 0
+Missing ratings before cleaning: 0
+Out-of-range ratings treated as invalid: 0
+Median used for imputation: 4.2
+Missing ratings after cleaning: 0
+Rating policy: numeric ratings above 5 were preserved; negative ratings were treated as invalid.
+
+6. RESTAURANT MAPPING CONSISTENCY
+--------------------------------------------------
+Unique IDs: 900
+IDs associated with multiple known names: 900
+IDs associated with multiple known cuisines: 900
+Names associated with multiple IDs: 500
+
+Top conflicting IDs and name counts:
+Restaurant_ID
+RES271    132
+RES910    130
+RES591    128
+RES509    128
+RES770    124
+RES325    124
+RES939    123
+RES419    123
+RES237    122
+RES771    121
+
+Top conflicting IDs and cuisine counts:
+Restaurant_ID
+RES100    5
+RES101    5
+RES102    5
+RES103    5
+RES104    5
+RES105    5
+RES106    5
+RES107    5
+RES108    5
+RES109    5
+
+Top names linked to multiple IDs:
+Restaurant_Name
+Restaurant_450    217
+Restaurant_309    213
+Restaurant_144    212
+Restaurant_291    212
+Restaurant_453    211
+Restaurant_332    210
+Restaurant_422    208
+Restaurant_19     207
+Restaurant_367    206
+Restaurant_340    206
+
+Mapping conflicts are reported, not automatically changed: the correct mappings cannot be inferred safely.
+
+7. MISSING VALUE VALIDATION
+--------------------------------------------------
+
+Missing values:
+Restaurant_ID        0
+Restaurant_Name      0
+Cuisine_Type         0
+Restaurant_Rating    0
+dtype: int64
+
+Missing percentage:
+Restaurant_ID        0.0
+Restaurant_Name      0.0
+Cuisine_Type         0.0
+Restaurant_Rating    0.0
+dtype: float64
+
+8. RESTAURANT SUMMARY
+--------------------------------------------------
+Total records: 100000
+Unique restaurant IDs: 900
+Unique restaurant names: 500
+Unique cuisine types: 6
+
+Cuisine distribution:
+Cuisine_Type
+Unknown    16885
+Indian     16685
+Arabian    16658
+Chinese    16651
+Mexican    16602
+Italian    16519
+Name: count, dtype: int64[pyarrow]
+
+9. RESTAURANT RATING SUMMARY
+--------------------------------------------------
+count    100000.0
+mean      4.24968
+std      0.722554
+min           3.0
+25%           3.6
+50%           4.2
+75%           4.9
+max           5.5
+Name: Restaurant_Rating, dtype: Float64
+
+Rating frequency:
+Restaurant_Rating
+3.0    2002
+3.1    4047
+3.2    3985
+3.3    3904
+3.4    4005
+3.5    3969
+3.6    4085
+3.7    3980
+3.8    4080
+3.9    3966
+4.0    3975
+4.1    3984
+4.2    4032
+4.3    4041
+4.4    4088
+4.5    3955
+4.6    3917
+4.7    4035
+4.8    3927
+4.9    3980
+5.0    4024
+5.1    4031
+5.2    4054
+5.3    4016
+5.4    3876
+5.5    2042
+
+Ratings above 5: 18019
+Percentage above 5: 18.02 %
+
+Sample records with ratings above 5:
+Restaurant_ID Restaurant_Name Cuisine_Type  Restaurant_Rating
+       RES876  Restaurant_227      Mexican                5.4
+       RES953  Restaurant_189      Italian                5.1
+       RES371  Restaurant_154       Indian                5.2
+       RES402   Restaurant_66      Mexican                5.3
+       RES910  Restaurant_419       Indian                5.1
+       RES841  Restaurant_172      Mexican                5.1
+       RES415  Restaurant_300      Arabian                5.2
+       RES110  Restaurant_500      Mexican                5.5
+       RES456  Restaurant_238      Chinese                5.1
+       RES736  Restaurant_338       Indian                5.2
+
+10. FINAL VALIDATION
+--------------------------------------------------
+Row count preserved: True
+Column structure preserved: True
+No missing values in required columns: True
+Ratings are numeric: True
+Final shape: (100000, 25)
+
+WARNING: Restaurant ID mappings remain inconsistent. Verify them against a trusted source.
+WARNING: Ratings above 5 remain. Confirm the source scale.
+
+Restaurant data cleaning completed.
+
+============================================================
+ORDER INFORMATION CLEANING AND VALIDATION
+============================================================
+
+1. REQUIRED COLUMN VALIDATION
+----------------------------------------
+All required columns are available.
+
+2. ORDER ID CLEANING
+----------------------------------------
+Missing Order_ID: 0
+Duplicate non-missing Order_ID rows: 0
+
+3. ORDER DATE CLEANING
+----------------------------------------
+Missing Order_Date: 1014
+Earliest date: 2024-01-01 00:00:00
+Latest date  : 2024-12-30 00:00:00
+
+4. ORDER TIME INSPECTION
+----------------------------------------
+Original data type: str
+Total rows: 100000
+Missing/missing-like values: 1998
+Non-missing values: 98002
+Unique non-missing time values: 1
+
+Most common Order_Time values:
+Order_Time
+0:00    98002
+<NA>     1998
+Name: count, dtype: int64[pyarrow]
+
+Time parsing validation:
+Parseable non-missing values: 98002
+Unparseable non-missing values: 0
+Parseable percentage: 100.0 %
+
+Order_Time reliability check:
+Most frequent time percentage: 100.0 %
+WARNING: All non-missing Order_Time values are identical.
+Do not derive Peak_Hour from Order_Time.
+
+Order_Time retained for investigation.
+
+5. ORDER DAY CLEANING
+----------------------------------------
+
+Order_Day distribution:
+Order_Day
+Monday       14401
+Saturday     14322
+Wednesday    14082
+Thursday     14081
+Friday       14069
+Sunday       14046
+Tuesday      13985
+<NA>          1014
+Name: count, dtype: int64[pyarrow]
+
+Missing Order_Day: 1014
+
+6. PEAK HOUR CLEANING
+----------------------------------------
+
+Peak_Hour distribution:
+Peak_Hour
+False    33585
+True     33453
+<NA>     32962
+Name: count, dtype: Int64
+
+Peak_Hour validation summary:
+Total records: 100000
+Known labels: 67038
+Missing labels: 32962
+Known labels percentage: 67.04 %
+Missing labels percentage: 32.96 %
+
+Cleaning decision:
+- Valid True/False values preserved.
+- Missing values retained as pd.NA.
+- No arbitrary imputation performed.
+
+7. FINAL VALIDATION
+----------------------------------------
+
+Missing values:
+Order_ID          0
+Order_Date     1014
+Order_Day      1014
+Peak_Hour     32962
+dtype: int64
+
+Missing percentage:
+Order_ID       0.00
+Order_Date     1.01
+Order_Day      1.01
+Peak_Hour     32.96
+dtype: float64
+
+Data types:
+Order_ID              string
+Order_Date    datetime64[us]
+Order_Day             string
+Peak_Hour            boolean
+dtype: object
+
+Order_Day mismatches: 0
+Peak_Hour contains only Boolean values among known entries: True
+Peak_Hour dtype is nullable Boolean: True
+
+Final dataset shape: (100000, 25)
+Order_Time exists: True
+
+Order information cleaning completed.
+
+======================================================================
+DELIVERY INFORMATION CLEANING AND IMPUTATION
+======================================================================
+Total records: 100000
+Delivered orders: 84964
+
+======================================================================
+1. DELIVERY TIME CLEANING
+======================================================================
+Invalid non-positive values: 0
+Missing/invalid before imputation: 33359
+
+Delivery time summary before imputation:
+count    66641.000000
+mean       127.475923
+std         90.805839
+min         20.000000
+25%         45.000000
+50%        120.000000
+75%        210.000000
+max        300.000000
+Name: Delivery_Time_Min, dtype: float64
+
+======================================================================
+2. DELIVERY DISTANCE CLEANING
+======================================================================
+Invalid non-positive values: 0
+Missing/invalid before imputation: 33470
+
+Distance summary before imputation:
+count    66530.000000
+mean        16.449242
+std         12.256742
+min          1.000000
+25%          5.470000
+50%          9.970000
+75%         27.430000
+max         40.000000
+Name: Distance_km, dtype: float64
+
+======================================================================
+3. DELIVERY PARTNER ID CLEANING
+======================================================================
+Missing partner IDs before filling: 0
+Unique delivery partners: 900
+Missing partner IDs after filling: 0
+
+======================================================================
+4. DELIVERY RATING CLEANING
+======================================================================
+Missing ratings before validation: 16523
+Invalid ratings replaced with NaN: 0
+Missing ratings after validation: 16523
+Missing rating percentage: 16.52 %
+
+Delivery rating distribution:
+Delivery_Rating
+1.0    16818
+2.0    16896
+3.0    16408
+4.0    16885
+5.0    16470
+NaN    16523
+Name: count, dtype: int64
+
+Delivery rating summary:
+count    83477.000000
+mean         2.991531
+std          1.414108
+min          1.000000
+25%          2.000000
+50%          3.000000
+75%          4.000000
+max          5.000000
+Name: Delivery_Rating, dtype: float64
+
+======================================================================
+5. DELIVERY TIME IMPUTATION
+======================================================================
+Median delivered-order time: 120.0
+Delivered-order times imputed: 28329
+Missing time before imputation: 33359
+Missing time after imputation: 5030
+
+======================================================================
+6. DELIVERY DISTANCE IMPUTATION
+======================================================================
+Median delivered-order distance: 9.97
+Delivered-order distances imputed: 28352
+Missing distance before imputation: 33470
+Missing distance after imputation: 5118
+
+======================================================================
+7. MISSING VALUES BY ORDER STATUS
+======================================================================
+
+Delivery_Time_Min by Order_Status:
+              Total_Rows  Missing_Values  Available_Values  Missing_Percentage
+Order_Status                                                                  
+Cancelled          15036            5030             10006               33.45
+Delivered          84964               0             84964                0.00
+
+Distance_km by Order_Status:
+              Total_Rows  Missing_Values  Available_Values  Missing_Percentage
+Order_Status                                                                  
+Cancelled          15036            5118              9918               34.04
+Delivered          84964               0             84964                0.00
+
+Delivery_Partner_ID by Order_Status:
+              Total_Rows  Missing_Values  Available_Values  Missing_Percentage
+Order_Status                                                                  
+Cancelled          15036               0             15036                 0.0
+Delivered          84964               0             84964                 0.0
+
+Delivery_Rating by Order_Status:
+              Total_Rows  Missing_Values  Available_Values  Missing_Percentage
+Order_Status                                                                  
+Cancelled          15036            2475             12561               16.46
+Delivered          84964           14048             70916               16.53
+
+======================================================================
+8. DELIVERY TIME AND DISTANCE MISSINGNESS
+======================================================================
+
+Missingness counts:
+Both_Missing              1732
+Time_Only_Missing         3298
+Distance_Only_Missing     3386
+Neither_Missing          91584
+dtype: int64
+
+Missingness percentages:
+Both_Missing              1.73
+Time_Only_Missing         3.30
+Distance_Only_Missing     3.39
+Neither_Missing          91.58
+dtype: float64
+
+Delivered orders: 84964
+Delivery_Time_Min: 0 missing (0.00%) among delivered orders
+Distance_km: 0 missing (0.00%) among delivered orders
+
+======================================================================
+9. DELIVERY INFORMATION OUTLIER CHECK
+======================================================================
+
+Delivery_Time_Min
+Lower IQR bound: -116.50
+Upper IQR bound: 343.50
+Potential outliers: 0
+
+Largest observed values:
+[300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0]
+
+Distance_km
+Lower IQR bound: -14.56
+Upper IQR bound: 44.05
+Potential outliers: 0
+
+Largest observed values:
+[40.0, 40.0, 40.0, 40.0, 40.0, 40.0, 40.0, 39.99, 39.99, 39.99]
+
+======================================================================
+10. FINAL DELIVERY INFORMATION VALIDATION
+======================================================================
+
+Missing values after cleaning:
+Delivery_Time_Min       5030
+Distance_km             5118
+Delivery_Partner_ID        0
+Delivery_Rating        16523
+dtype: int64
+
+Missing percentage after cleaning:
+Delivery_Time_Min       5.03
+Distance_km             5.12
+Delivery_Partner_ID     0.00
+Delivery_Rating        16.52
+dtype: float64
+
+Final data types:
+Delivery_Time_Min      float64
+Distance_km            float64
+Delivery_Partner_ID     string
+Delivery_Rating        float64
+dtype: object
+
+Final dataset shape: (100000, 25)
+Delivery information cleaning completed.
+
+===========================================================================
+PROFIT MARGIN DATA QUALITY ANALYSIS
+===========================================================================
+Total rows: 100,000
+Missing Profit_Margin values: 0
+Negative Profit_Margin values: 27,733
+Zero Profit_Margin values: 1,506
+Positive Profit_Margin values: 70,761
+
+Profit_Margin descriptive statistics:
+count    100000.000000
+mean          0.150362
+std           0.201888
+min          -0.200000
+25%          -0.020000
+50%           0.150000
+75%           0.320000
+max           0.500000
+
+===========================================================================
+CANDIDATE FORMULA COMPARISON
+===========================================================================
+                                         Formula  Comparable_Rows  Matching_Rows  Match_Percentage  Mean_Absolute_Error
+                    Discount as % of Order Value           100000            832              0.83               9.7829
+                Final Amount as % of Order Value           100000             40              0.04              90.2837
+Retained Amount % using Order Value and Discount           100000              0              0.00              90.5881
+                   Discount as % of Final Amount            99223            833              0.84              19.4525
+
+===========================================================================
+FINAL_AMOUNT ARITHMETIC VALIDATION
+===========================================================================
+Comparable rows: 100,000
+Rows matching Order_Value - Discount_Applied: 99,227
+Rows not matching the formula: 773
+Arithmetic match percentage: 99.23%
+
+===========================================================================
+FORMULA VERIFICATION DECISION
+===========================================================================
+Best candidate match: 0.84%
+None of the tested formulas sufficiently explains the existing Profit_Margin column.
+
+===========================================================================
+PROFIT_MARGIN CLEANING DECISION
+===========================================================================
+Decision: Retain the original Profit_Margin values, including negative values.
+Reason: The actual order cost and the original business formula are not available for verification.
+Do not calculate true profit margin from Order_Value and Final_Amount alone.
+Do not automatically remove negative values or replace them with zero.
+Treat Profit_Margin as an unverified source field until its definition and units can be confirmed.
+Note: Retaining the source values does not establish that they are correct.
+
+No changes were made to the input dataframe.
+===========================================================================
+
+======================================================================
+DATASET COMPARISON: BEFORE VS AFTER CLEANING
+======================================================================
+
+1. DATASET SHAPE
+Before cleaning: (100000, 25)
+After cleaning : (100000, 25)
+Rows before: 100,000
+Rows after : 100,000
+Columns before: 25
+Columns after : 25
+Rows removed: 0
+Columns removed: 0
+
+2. COLUMN CHANGES
+Removed columns: None
+Added columns: None
+Common columns: 25
+
+3. MISSING VALUE COMPARISON
+                     Missing_Before  Missing_After  Missing_Before_%  Missing_After_%  Missing_Values_Change
+Order_ID                          0              0              0.00             0.00                      0
+Customer_ID                       0              0              0.00             0.00                      0
+Customer_Age                  50093              0             50.09             0.00                  50093
+Customer_Gender               24856              0             24.86             0.00                  24856
+City                          16726              0             16.73             0.00                  16726
+Area                          16685              0             16.68             0.00                  16685
+Restaurant_ID                     0              0              0.00             0.00                      0
+Restaurant_Name                   0              0              0.00             0.00                      0
+Cuisine_Type                  16885              0             16.89             0.00                  16885
+Order_Date                     1014           1014              1.01             1.01                      0
+Order_Time                     1998           1998              2.00             2.00                      0
+Delivery_Time_Min             33359           5030             33.36             5.03                  28329
+Distance_km                   33470           5118             33.47             5.12                  28352
+Order_Value                   33327              0             33.33             0.00                  33327
+Discount_Applied              16715              0             16.72             0.00                  16715
+Final_Amount                  55697              0             55.70             0.00                  55697
+Payment_Mode                  19911              0             19.91             0.00                  19911
+Order_Status                      0              0              0.00             0.00                      0
+Cancellation_Reason           90969              0             90.97             0.00                  90969
+Delivery_Partner_ID               0              0              0.00             0.00                      0
+Delivery_Rating               16523          16523             16.52            16.52                      0
+Restaurant_Rating                 0              0              0.00             0.00                      0
+Order_Day                         0           1014              0.00             1.01                  -1014
+Peak_Hour                     32962          32962             32.96            32.96                      0
+Profit_Margin                     0              0              0.00             0.00                      0
+
+4. DATA TYPE COMPARISON
+                    Data_Type_Before Data_Type_After  Type_Changed
+Order_ID                         str          string          True
+Customer_ID                      str             str         False
+Customer_Age                 float64         float64         False
+Customer_Gender                  str          string          True
+City                             str          string          True
+Area                             str          string          True
+Restaurant_ID                    str          string          True
+Restaurant_Name                  str          string          True
+Cuisine_Type                     str          string          True
+Order_Date                       str  datetime64[us]          True
+Order_Time                       str             str         False
+Delivery_Time_Min            float64         float64         False
+Distance_km                  float64         float64         False
+Order_Value                  float64         float64         False
+Discount_Applied             float64         float64         False
+Final_Amount                 float64         float64         False
+Payment_Mode                     str          string          True
+Order_Status                     str             str         False
+Cancellation_Reason              str             str         False
+Delivery_Partner_ID              str          string          True
+Delivery_Rating              float64         float64         False
+Restaurant_Rating            float64         Float64          True
+Order_Day                        str          string          True
+Peak_Hour                     object         boolean          True
+Profit_Margin                float64         float64         False
+
+5. DUPLICATE ROWS
+Before cleaning: 0
+After cleaning : 0
+Duplicate reduction: 0
+
+6. MEMORY USAGE
+Before cleaning: 30.75 MB
+After cleaning : 28.66 MB
+Memory change   : -2.09 MB
+
+7. CLEANING SUMMARY
+Rows preserved: True
+Columns preserved: True
+Missing values before: 461,190
+Missing values after: 63,659
+
+Dataset comparison completed.
+
+DATA CLEANING COMPLETED
+Final dataset shape: (100000, 25)
+Remaining missing values: 63659
+Cleaned dataset saved to: C:\Users\Priya Jeyakishore\OneDrive\Desktop\GUVI_Data_Science_ZenClass\Online_Food_Delivery_Analysis\output\Data_Cleaning\cleaned_online_food_delivery_dataset.csv
+Report saved to: C:\Users\Priya Jeyakishore\OneDrive\Desktop\GUVI_Data_Science_ZenClass\Online_Food_Delivery_Analysis\output\Data_Cleaning\data_cleaning_report.txt

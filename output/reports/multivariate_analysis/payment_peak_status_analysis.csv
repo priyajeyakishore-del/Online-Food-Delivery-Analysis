@@ -1,0 +1,11 @@
+Payment_Mode,Peak_Hour,Cancelled,Delivered,Total_Orders,Cancellation_Rate_Percent,Delivery_Rate_Percent
+Unknown,Peak,1035,5517,6552,15.8,84.2
+Wallet,Peak,1043,5676,6719,15.52,84.48
+COD,Peak,1022,5658,6680,15.3,84.7
+Card,Non-Peak,1022,5714,6736,15.17,84.83
+Unknown,Non-Peak,1013,5723,6736,15.04,84.96
+UPI,Non-Peak,989,5624,6613,14.96,85.04
+COD,Non-Peak,1018,5799,6817,14.93,85.07
+Card,Peak,1008,5834,6842,14.73,85.27
+Wallet,Non-Peak,979,5704,6683,14.65,85.35
+UPI,Peak,975,5685,6660,14.64,85.36

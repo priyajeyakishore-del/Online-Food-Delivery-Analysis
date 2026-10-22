@@ -1,0 +1,10 @@
+Column,Unique_Categories,Missing_Count,Missing_Percentage,Most_Frequent_Category,Most_Frequent_Count
+Order_Status,2,0,0.0,Delivered,84964
+Payment_Mode,5,0,0.0,Card,20094
+Customer_Gender,4,0,0.0,Other,25135
+City,6,0,0.0,Hyderabad,16884
+Area,6,0,0.0,South,16725
+Cuisine_Type,6,0,0.0,Unknown,16885
+Order_Day,7,1014,1.014,Monday,14401
+Peak_Hour,2,32962,32.962,False,33585
+Cancellation_Reason,5,0,0.0,Not Applicable,84964

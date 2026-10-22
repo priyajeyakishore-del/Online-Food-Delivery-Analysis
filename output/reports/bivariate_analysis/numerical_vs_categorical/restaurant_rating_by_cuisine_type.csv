@@ -1,0 +1,7 @@
+Numerical_Column,Categorical_Column,Cuisine_Type,Count,Mean,Median,Std,Minimum,Maximum
+Restaurant_Rating,Cuisine_Type,Arabian,16658,4.2519930363789165,4.3,0.7202038406891316,3.0,5.5
+Restaurant_Rating,Cuisine_Type,Chinese,16651,4.239937541288811,4.2,0.7233580987599577,3.0,5.5
+Restaurant_Rating,Cuisine_Type,Indian,16685,4.252376385975427,4.3,0.7194000685715537,3.0,5.5
+Restaurant_Rating,Cuisine_Type,Italian,16519,4.262521944427629,4.3,0.7260552830968149,3.0,5.5
+Restaurant_Rating,Cuisine_Type,Mexican,16602,4.243789904830743,4.2,0.7210060278099674,3.0,5.5
+Restaurant_Rating,Cuisine_Type,Unknown,16885,4.247568848090021,4.2,0.7251617429892917,3.0,5.5

@@ -1,0 +1,5 @@
+Peak_Hour,Order_Status,Total_Orders,Average_Delivery_Time_Min,Median_Delivery_Time_Min,Minimum_Delivery_Time_Min,Maximum_Delivery_Time_Min
+Non-Peak,Cancelled,3361,127.39,122.0,20.0,300.0
+Non-Peak,Delivered,28564,125.4,120.0,20.0,300.0
+Peak,Cancelled,3362,128.67,122.0,20.0,300.0
+Peak,Delivered,28370,124.5,120.0,20.0,300.0

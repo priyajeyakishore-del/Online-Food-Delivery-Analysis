@@ -1,0 +1,7 @@
+Numerical_Column,Categorical_Column,Cuisine_Type,Count,Mean,Median,Std,Minimum,Maximum
+Profit_Margin,Cuisine_Type,Arabian,16658,0.15113759154760475,0.15,0.20079919905978072,-0.2,0.5
+Profit_Margin,Cuisine_Type,Chinese,16651,0.14933997958080594,0.15,0.20272048336789394,-0.2,0.5
+Profit_Margin,Cuisine_Type,Indian,16685,0.14920707222055737,0.15,0.20212785724987442,-0.2,0.5
+Profit_Margin,Cuisine_Type,Italian,16519,0.15159513287729282,0.15,0.20168350483150962,-0.2,0.5
+Profit_Margin,Cuisine_Type,Mexican,16602,0.15111793759787978,0.15,0.2028683019190269,-0.2,0.5
+Profit_Margin,Cuisine_Type,Unknown,16885,0.1497962688777021,0.15,0.20114607354469574,-0.2,0.5

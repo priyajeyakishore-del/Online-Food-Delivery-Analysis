@@ -1,0 +1,6 @@
+Variable_1,Variable_2,Valid_Pairs,Pearson_Correlation
+Distance_km,Delivery_Time_Min,91584,0.0026187245851715564
+Order_Value,Final_Amount,100000,0.9973233540082895
+Customer_Age,Order_Value,100000,-0.00199708596883751
+Restaurant_Rating,Delivery_Rating,83477,0.0007225447869117058
+Discount_Applied,Final_Amount,100000,-0.07037491079550393

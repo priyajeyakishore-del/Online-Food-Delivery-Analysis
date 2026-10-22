@@ -1,0 +1,25 @@
+City_Category,Cancellation_Reason_Category,Cancellation_Count
+Bangalore,Unknown,972
+Bangalore,Late Delivery,525
+Bangalore,Restaurant Issue,511
+Bangalore,Customer Cancelled,493
+Chennai,Unknown,1016
+Chennai,Late Delivery,489
+Chennai,Restaurant Issue,489
+Chennai,Customer Cancelled,488
+Delhi,Unknown,905
+Delhi,Late Delivery,555
+Delhi,Customer Cancelled,553
+Delhi,Restaurant Issue,501
+Hyderabad,Unknown,1057
+Hyderabad,Late Delivery,517
+Hyderabad,Customer Cancelled,509
+Hyderabad,Restaurant Issue,475
+Mumbai,Unknown,998
+Mumbai,Restaurant Issue,513
+Mumbai,Late Delivery,486
+Mumbai,Customer Cancelled,464
+Unknown,Unknown,1057
+Unknown,Restaurant Issue,490
+Unknown,Late Delivery,487
+Unknown,Customer Cancelled,486

@@ -1,0 +1,11 @@
+Feature_Name,Data_Type,Non_Missing_Count,Missing_Count,Unique_Values
+Order_Year,Int64,98986,1014,1
+Order_Month,Int64,98986,1014,12
+Order_Month_Name,string,98986,1014,12
+Order_Weekday,string,98986,1014,7
+Is_Weekend,boolean,98986,1014,2
+Distance_Category,string,94882,5118,4
+Delivery_Time_Category,string,94970,5030,4
+Order_Value_Category,string,100000,0,4
+Discount_Percentage,float64,100000,0,11839
+Rating_Category,string,83477,16523,4

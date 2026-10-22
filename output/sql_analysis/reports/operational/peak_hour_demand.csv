@@ -1,0 +1,4 @@
+Peak_Hour_Category,Total_Orders,Delivered_Orders,Cancelled_Orders,Cancellation_Rate_Percent,Delivered_Revenue,Average_Delivery_Time_Min
+Off-Peak,33585,28564.0,5021.0,14.95,48288046.0,125.4
+Peak Hour,33453,28370.0,5083.0,15.19,48037352.0,124.5
+Unknown,32962,28030.0,4932.0,14.96,47568720.0,125.03

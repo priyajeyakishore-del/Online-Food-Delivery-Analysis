@@ -1,0 +1,9 @@
+Peak_Hour,Distance_Band,Total_Orders,Average_Delivery_Time_Min,Median_Delivery_Time_Min,Average_Distance_km
+Non-Peak,0-2 km,1170,127.01,120.0,1.49
+Non-Peak,2-5 km,3632,126.53,120.0,3.51
+Non-Peak,5-10 km,15435,125.15,120.0,9.01
+Non-Peak,Above 10 km,10536,125.74,120.0,27.52
+Peak,0-2 km,1173,121.11,120.0,1.49
+Peak,2-5 km,3520,123.01,120.0,3.49
+Peak,5-10 km,15369,125.23,120.0,9.03
+Peak,Above 10 km,10533,124.98,120.0,27.47

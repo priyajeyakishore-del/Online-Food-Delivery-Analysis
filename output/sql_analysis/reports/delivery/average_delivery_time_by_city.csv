@@ -1,0 +1,7 @@
+City,Delivered_Orders,Average_Delivery_Time_Min,Minimum_Delivery_Time_Min,Maximum_Delivery_Time_Min
+Mumbai,14032,125.79,20.0,300.0
+Unknown,14206,125.19,20.0,300.0
+Hyderabad,14326,125.18,20.0,300.0
+Delhi,14181,125.03,20.0,300.0
+Chennai,13988,124.34,20.0,300.0
+Bangalore,14231,124.33,20.0,300.0

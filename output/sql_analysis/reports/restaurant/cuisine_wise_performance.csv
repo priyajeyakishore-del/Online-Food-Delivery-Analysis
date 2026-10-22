@@ -1,0 +1,7 @@
+Cuisine_Type,Total_Orders,Delivered_Orders,Cancelled_Orders,Cancellation_Rate_Percent,Delivered_Revenue,Average_Restaurant_Rating,Average_Delivery_Time_Min
+Unknown,16885,14360.0,2525.0,14.95,24493870.0,4.02,125.24
+Chinese,16651,14173.0,2478.0,14.88,24068882.0,4.02,123.73
+Mexican,16602,14090.0,2512.0,15.13,24049695.0,4.02,125.23
+Indian,16685,14113.0,2572.0,15.42,23954079.0,4.03,125.31
+Arabian,16658,14200.0,2458.0,14.76,23750252.0,4.03,125.11
+Italian,16519,14028.0,2491.0,15.08,23577340.0,4.02,125.23

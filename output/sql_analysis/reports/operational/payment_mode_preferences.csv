@@ -1,0 +1,6 @@
+Payment_Mode_Category,Total_Orders,Order_Share_Percent,Delivered_Orders,Cancelled_Orders,Cancellation_Rate_Percent,Delivered_Revenue,Average_Delivered_Order_Value
+Card,20094,20.09,17091.0,3003.0,14.94,28721319.0,1680.49
+Wallet,20086,20.09,17081.0,3005.0,14.96,28798180.0,1685.98
+COD,19977,19.98,16964.0,3013.0,15.08,28965738.0,1707.48
+UPI,19932,19.93,16942.0,2990.0,15.0,28819806.0,1701.09
+Unknown,19911,19.91,16886.0,3025.0,15.19,28589075.0,1693.06

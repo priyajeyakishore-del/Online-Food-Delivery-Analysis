@@ -1,0 +1,13 @@
+Peak_Hour_Category,Cancellation_Reason_Category,Cancellation_Count
+Off-Peak,Unknown,2020
+Off-Peak,Customer Cancelled,1015
+Off-Peak,Restaurant Issue,1005
+Off-Peak,Late Delivery,981
+Peak Hour,Unknown,2054
+Peak Hour,Late Delivery,1038
+Peak Hour,Restaurant Issue,1007
+Peak Hour,Customer Cancelled,984
+Unknown,Unknown,1931
+Unknown,Late Delivery,1040
+Unknown,Customer Cancelled,994
+Unknown,Restaurant Issue,967

@@ -1,0 +1,6 @@
+Delivery_Rating,Number_of_Orders,Average_Delivery_Time_Min,Median_Delivery_Time_Min,Minimum_Delivery_Time_Min,Maximum_Delivery_Time_Min
+1.0,14292,125.05,120.0,20.0,300.0
+2.0,14377,124.64,120.0,20.0,300.0
+3.0,13865,124.67,120.0,20.0,300.0
+4.0,14375,126.0,120.0,20.0,300.0
+5.0,14007,125.07,120.0,20.0,300.0

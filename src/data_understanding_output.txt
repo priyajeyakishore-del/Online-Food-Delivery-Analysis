@@ -1,0 +1,1364 @@
+
+============================================================
+SECTION 2: DATASET OVERVIEW
+============================================================
+Total Records: 100000
+Total Features: 25
+
+Dataset Preview:
+    Order_ID Customer_ID  Customer_Age Customer_Gender     City     Area Restaurant_ID Restaurant_Name Cuisine_Type  Order_Date Order_Time  Delivery_Time_Min  Distance_km  Order_Value  Discount_Applied  Final_Amount Payment_Mode Order_Status Cancellation_Reason Delivery_Partner_ID  Delivery_Rating  Restaurant_Rating Order_Day Peak_Hour  Profit_Margin
+0  ORD000001    CUST6948          19.0            Male      NaN  Central        RES936   Restaurant_29      Chinese  10/20/2024       0:00              187.0        15.75          NaN               NaN           NaN          UPI    Delivered                 NaN               DP563              5.0                4.4   Weekend      True           0.13
+1  ORD000002    CUST6515           NaN          Female  Chennai    North        RES689  Restaurant_419      Chinese   8/12/2024       0:00               20.0        29.50       4869.0              20.0        4849.0          COD    Delivered                 NaN               DP369              5.0                4.7   Weekday      True           0.48
+2  ORD000003    CUST1765           NaN            Male    Delhi      NaN        RES723  Restaurant_244      Arabian   12/8/2024       0:00              207.0          NaN        757.0              20.0         737.0       Wallet    Delivered                 NaN               DP580              4.0                4.9   Weekend      True           0.08
+3  ORD000004    CUST2744           NaN            Male   Mumbai  Central        RES951  Restaurant_178      Chinese   10/8/2024       0:00              143.0        15.68          NaN               NaN           NaN          UPI    Cancelled       Late Delivery               DP155              2.0                3.4   Weekday       NaN           0.04
+4  ORD000005    CUST4389          57.0          Female  Chennai    South        RES419  Restaurant_262      Chinese    2/4/2024       0:00               51.0         9.60        372.0              20.0         352.0         Card    Delivered                 NaN               DP728              2.0                4.4   Weekend     False           0.12
+
+Dataset Information:
+<class 'pandas.DataFrame'>
+RangeIndex: 100000 entries, 0 to 99999
+Data columns (total 25 columns):
+ #   Column               Non-Null Count   Dtype  
+---  ------               --------------   -----  
+ 0   Order_ID             100000 non-null  str    
+ 1   Customer_ID          100000 non-null  str    
+ 2   Customer_Age         49907 non-null   float64
+ 3   Customer_Gender      75144 non-null   str    
+ 4   City                 83274 non-null   str    
+ 5   Area                 83315 non-null   str    
+ 6   Restaurant_ID        100000 non-null  str    
+ 7   Restaurant_Name      100000 non-null  str    
+ 8   Cuisine_Type         83115 non-null   str    
+ 9   Order_Date           98986 non-null   str    
+ 10  Order_Time           98002 non-null   str    
+ 11  Delivery_Time_Min    66641 non-null   float64
+ 12  Distance_km          66530 non-null   float64
+ 13  Order_Value          66673 non-null   float64
+ 14  Discount_Applied     83285 non-null   float64
+ 15  Final_Amount         44303 non-null   float64
+ 16  Payment_Mode         80089 non-null   str    
+ 17  Order_Status         100000 non-null  str    
+ 18  Cancellation_Reason  9031 non-null    str    
+ 19  Delivery_Partner_ID  100000 non-null  str    
+ 20  Delivery_Rating      83477 non-null   float64
+ 21  Restaurant_Rating    100000 non-null  float64
+ 22  Order_Day            100000 non-null  str    
+ 23  Peak_Hour            67038 non-null   object 
+ 24  Profit_Margin        100000 non-null  float64
+dtypes: float64(9), object(1), str(15)
+memory usage: 28.2+ MB
+None
+
+Column Names:
+['Order_ID', 'Customer_ID', 'Customer_Age', 'Customer_Gender', 'City', 'Area', 'Restaurant_ID', 'Restaurant_Name', 'Cuisine_Type', 'Order_Date', 'Order_Time', 'Delivery_Time_Min', 'Distance_km', 'Order_Value', 'Discount_Applied', 'Final_Amount', 'Payment_Mode', 'Order_Status', 'Cancellation_Reason', 'Delivery_Partner_ID', 'Delivery_Rating', 'Restaurant_Rating', 'Order_Day', 'Peak_Hour', 'Profit_Margin']
+
+================================================================================
+SECTION 3: FEATURE CATEGORIZATION
+================================================================================
+
+====================================================================================================
+KEY FEATURE CATEGORIES
+====================================================================================================
+              Category                                                            Variables  Number of Variables
+  Customer Information                           Customer_ID, Customer_Age, Customer_Gender                    3
+  Location Information                                                           City, Area                    2
+Restaurant Information      Restaurant_ID, Restaurant_Name, Cuisine_Type, Restaurant_Rating                    4
+     Order Information               Order_ID, Order_Date, Order_Time, Order_Day, Peak_Hour                    5
+  Delivery Information Delivery_Time_Min, Distance_km, Delivery_Partner_ID, Delivery_Rating                    4
+ Financial Information           Order_Value, Discount_Applied, Final_Amount, Profit_Margin                    4
+   Payment Information                                                         Payment_Mode                    1
+     Outcome Variables                                    Order_Status, Cancellation_Reason                    2
+
+====================================================================================================
+TOTAL CATEGORIES: 8
+TOTAL VARIABLE ENTRIES: 25
+TOTAL DATASET FEATURES: 25
+====================================================================================================
+
+Uncategorized Dataset Columns:
+[]
+
+================================================================================
+SECTION 4: DATA ISSUES IDENTIFICATION
+================================================================================
+
+1. INCOMPLETE ROWS
+--------------------------------------------------------------------------------
+Rows containing missing values: 99829
+Percentage of incomplete rows: 99.83 %
+
+Missing Values by Column:
+                     Missing Count  Missing Percentage
+Cancellation_Reason          90969               90.97
+Final_Amount                 55697               55.70
+Customer_Age                 50093               50.09
+Distance_km                  33470               33.47
+Delivery_Time_Min            33359               33.36
+Order_Value                  33327               33.33
+Peak_Hour                    32962               32.96
+Customer_Gender              24856               24.86
+Payment_Mode                 19911               19.91
+Cuisine_Type                 16885               16.89
+City                         16726               16.73
+Discount_Applied             16715               16.72
+Area                         16685               16.68
+Delivery_Rating              16523               16.52
+Order_Time                    1998                2.00
+Order_Date                    1014                1.01
+
+2. NEGATIVE PROFIT MARGINS
+--------------------------------------------------------------------------------
+Negative profit margin records: 27733
+Negative profit margin percentage: 27.73 %
+
+3. ZERO OR NEGATIVE FINAL AMOUNTS
+--------------------------------------------------------------------------------
+Zero final amounts: 4
+Negative final amounts: 773
+
+4. DATA TYPES ACROSS COLUMNS
+--------------------------------------------------------------------------------
+Order_ID                   str
+Customer_ID                str
+Customer_Age           float64
+Customer_Gender            str
+City                       str
+Area                       str
+Restaurant_ID              str
+Restaurant_Name            str
+Cuisine_Type               str
+Order_Date                 str
+Order_Time                 str
+Delivery_Time_Min      float64
+Distance_km            float64
+Order_Value            float64
+Discount_Applied       float64
+Final_Amount           float64
+Payment_Mode               str
+Order_Status               str
+Cancellation_Reason        str
+Delivery_Partner_ID        str
+Delivery_Rating        float64
+Restaurant_Rating      float64
+Order_Day                  str
+Peak_Hour               object
+Profit_Margin          float64
+
+Data Type Counts:
+str        15
+float64     9
+object      1
+
+5. POTENTIAL MALFORMED RECORDS
+--------------------------------------------------------------------------------
+Duplicate rows: 0
+Missing Order_ID values: 0
+Rows with repeated Order_ID values: 0
+
+================================================================================
+SECTION 5: BASIC EXPLORATORY ANALYSIS
+================================================================================
+
+1. NUMERICAL VARIABLES
+--------------------------------------------------------------------------------
+
+Summary Statistics:
+       Customer_Age  Delivery_Time_Min  Distance_km  Order_Value  Discount_Applied  Final_Amount  Profit_Margin  Delivery_Rating  Restaurant_Rating
+count      49907.00           66641.00     66530.00     66673.00          83285.00      44303.00      100000.00         83477.00          100000.00
+mean          38.98             127.48        16.45      2081.83             93.94       1961.10           0.15             2.99               4.25
+std           12.37              90.81        12.26      1553.63            108.21       1557.35           0.20             1.41               0.72
+min           18.00              20.00         1.00       150.00              0.00       -150.00          -0.20             1.00               3.00
+25%           28.00              45.00         5.47       673.00             20.00        559.00          -0.02             2.00               3.60
+50%           39.00             120.00         9.97      1197.00             50.00       1156.00           0.15             3.00               4.20
+75%           50.00             210.00        27.43      3494.00            100.00       3375.00           0.32             4.00               4.90
+max           60.00             300.00        40.00      5000.00            300.00       4980.00           0.50             5.00               5.50
+
+Median Values:
+Customer_Age           39.00
+Delivery_Time_Min     120.00
+Distance_km             9.97
+Order_Value          1197.00
+Discount_Applied       50.00
+Final_Amount         1156.00
+Profit_Margin           0.15
+Delivery_Rating         3.00
+Restaurant_Rating       4.20
+
+Missing Values in Numerical Variables:
+Customer_Age         50093
+Delivery_Time_Min    33359
+Distance_km          33470
+Order_Value          33327
+Discount_Applied     16715
+Final_Amount         55697
+Profit_Margin            0
+Delivery_Rating      16523
+Restaurant_Rating        0
+
+2. CATEGORICAL VARIABLES
+--------------------------------------------------------------------------------
+
+City - Value Counts:
+City
+Hyderabad    16884
+Bangalore    16732
+NaN          16726
+Delhi        16695
+Mumbai       16493
+Chennai      16470
+
+City - Percentage Distribution:
+City
+Hyderabad    16.88%
+Bangalore    16.73%
+NaN          16.73%
+Delhi         16.7%
+Mumbai       16.49%
+Chennai      16.47%
+
+Area - Value Counts:
+Area
+South      16725
+NaN        16685
+North      16675
+West       16653
+East       16643
+Central    16619
+
+Area - Percentage Distribution:
+Area
+South      16.73%
+NaN        16.68%
+North      16.68%
+West       16.65%
+East       16.64%
+Central    16.62%
+
+Customer_Gender - Value Counts:
+Customer_Gender
+Other     25135
+Female    25031
+Male      24978
+NaN       24856
+
+Customer_Gender - Percentage Distribution:
+Customer_Gender
+Other     25.14%
+Female    25.03%
+Male      24.98%
+NaN       24.86%
+
+Restaurant_Name - Value Counts:
+Restaurant_Name
+Restaurant_450    246
+Restaurant_309    238
+Restaurant_144    237
+Restaurant_74     236
+Restaurant_435    234
+Restaurant_291    234
+Restaurant_221    234
+Restaurant_338    233
+Restaurant_87     233
+Restaurant_346    232
+Restaurant_103    232
+Restaurant_453    232
+Restaurant_332    232
+Restaurant_422    231
+Restaurant_271    230
+Restaurant_470    227
+Restaurant_407    227
+Restaurant_76     227
+Restaurant_270    226
+Restaurant_367    226
+Restaurant_71     226
+Restaurant_467    226
+Restaurant_382    225
+Restaurant_234    225
+Restaurant_308    224
+Restaurant_19     224
+Restaurant_184    223
+Restaurant_47     222
+Restaurant_428    222
+Restaurant_260    222
+Restaurant_149    222
+Restaurant_256    222
+Restaurant_377    222
+Restaurant_175    222
+Restaurant_15     221
+Restaurant_240    221
+Restaurant_452    221
+Restaurant_200    221
+Restaurant_341    221
+Restaurant_400    220
+Restaurant_340    220
+Restaurant_180    220
+Restaurant_368    219
+Restaurant_225    219
+Restaurant_389    219
+Restaurant_208    219
+Restaurant_439    219
+Restaurant_446    219
+Restaurant_199    219
+Restaurant_89     219
+Restaurant_475    218
+Restaurant_457    218
+Restaurant_46     218
+Restaurant_16     218
+Restaurant_285    218
+Restaurant_479    218
+Restaurant_166    218
+Restaurant_120    217
+Restaurant_212    217
+Restaurant_409    216
+Restaurant_213    216
+Restaurant_90     216
+Restaurant_438    215
+Restaurant_412    215
+Restaurant_214    215
+Restaurant_196    215
+Restaurant_45     215
+Restaurant_177    215
+Restaurant_77     215
+Restaurant_327    215
+Restaurant_380    215
+Restaurant_93     215
+Restaurant_182    215
+Restaurant_227    214
+Restaurant_189    214
+Restaurant_313    214
+Restaurant_140    214
+Restaurant_312    214
+Restaurant_257    214
+Restaurant_304    214
+Restaurant_364    214
+Restaurant_37     214
+Restaurant_289    213
+Restaurant_476    213
+Restaurant_427    213
+Restaurant_105    213
+Restaurant_187    213
+Restaurant_245    213
+Restaurant_350    213
+Restaurant_244    212
+Restaurant_215    212
+Restaurant_261    212
+Restaurant_397    212
+Restaurant_395    212
+Restaurant_146    212
+Restaurant_67     212
+Restaurant_157    212
+Restaurant_59     212
+Restaurant_326    212
+Restaurant_106    212
+Restaurant_209    212
+Restaurant_426    212
+Restaurant_33     212
+Restaurant_388    212
+Restaurant_248    211
+Restaurant_490    211
+Restaurant_124    211
+Restaurant_493    211
+Restaurant_277    211
+Restaurant_498    211
+Restaurant_447    210
+Restaurant_322    210
+Restaurant_39     210
+Restaurant_70     210
+Restaurant_451    210
+Restaurant_133    210
+Restaurant_49     210
+Restaurant_130    210
+Restaurant_344    210
+Restaurant_295    210
+Restaurant_43     209
+Restaurant_122    209
+Restaurant_173    209
+Restaurant_298    209
+Restaurant_325    209
+Restaurant_176    209
+Restaurant_402    209
+Restaurant_316    209
+Restaurant_201    209
+Restaurant_334    209
+Restaurant_335    209
+Restaurant_220    209
+Restaurant_6      209
+Restaurant_237    208
+Restaurant_238    208
+Restaurant_420    208
+Restaurant_474    208
+Restaurant_320    208
+Restaurant_437    208
+Restaurant_48     208
+Restaurant_275    208
+Restaurant_143    208
+Restaurant_211    208
+Restaurant_13     208
+Restaurant_29     207
+Restaurant_328    207
+Restaurant_9      207
+Restaurant_56     207
+Restaurant_139    207
+Restaurant_148    207
+Restaurant_353    207
+Restaurant_444    207
+Restaurant_228    207
+Restaurant_193    207
+Restaurant_294    207
+Restaurant_339    207
+Restaurant_434    207
+Restaurant_383    207
+Restaurant_300    206
+Restaurant_191    206
+Restaurant_195    206
+Restaurant_249    206
+Restaurant_4      206
+Restaurant_10     206
+Restaurant_142    206
+Restaurant_349    206
+Restaurant_192    206
+Restaurant_206    206
+Restaurant_128    206
+Restaurant_333    206
+Restaurant_374    205
+Restaurant_5      205
+Restaurant_174    205
+Restaurant_113    205
+Restaurant_266    205
+Restaurant_95     205
+Restaurant_469    205
+Restaurant_181    205
+Restaurant_92     205
+Restaurant_460    205
+Restaurant_306    205
+Restaurant_11     205
+Restaurant_375    205
+Restaurant_188    204
+Restaurant_487    204
+Restaurant_22     204
+Restaurant_35     204
+Restaurant_363    204
+Restaurant_202    204
+Restaurant_264    204
+Restaurant_132    204
+Restaurant_436    204
+Restaurant_152    204
+Restaurant_282    204
+Restaurant_315    204
+Restaurant_310    204
+Restaurant_153    203
+Restaurant_499    203
+Restaurant_2      203
+Restaurant_96     203
+Restaurant_418    203
+Restaurant_65     203
+Restaurant_78     203
+Restaurant_371    203
+Restaurant_145    203
+Restaurant_226    203
+Restaurant_399    203
+Restaurant_348    203
+Restaurant_94     203
+Restaurant_305    203
+Restaurant_370    203
+Restaurant_141    203
+Restaurant_486    203
+Restaurant_42     203
+Restaurant_496    203
+Restaurant_494    202
+Restaurant_34     202
+Restaurant_217    202
+Restaurant_111    202
+Restaurant_129    202
+Restaurant_136    202
+Restaurant_151    202
+Restaurant_351    202
+Restaurant_205    202
+Restaurant_359    202
+Restaurant_424    202
+Restaurant_337    202
+Restaurant_347    202
+Restaurant_30     202
+Restaurant_489    202
+Restaurant_51     201
+Restaurant_127    201
+Restaurant_85     201
+Restaurant_448    201
+Restaurant_114    201
+Restaurant_287    201
+Restaurant_218    201
+Restaurant_263    201
+Restaurant_100    201
+Restaurant_121    201
+Restaurant_408    201
+Restaurant_430    201
+Restaurant_433    201
+Restaurant_390    201
+Restaurant_115    201
+Restaurant_410    201
+Restaurant_369    201
+Restaurant_345    201
+Restaurant_82     201
+Restaurant_404    201
+Restaurant_378    200
+Restaurant_236    200
+Restaurant_307    200
+Restaurant_36     200
+Restaurant_478    200
+Restaurant_118    200
+Restaurant_417    200
+Restaurant_185    200
+Restaurant_463    199
+Restaurant_163    199
+Restaurant_158    199
+Restaurant_286    199
+Restaurant_160    199
+Restaurant_79     199
+Restaurant_179    199
+Restaurant_247    199
+Restaurant_17     199
+Restaurant_262    198
+Restaurant_413    198
+Restaurant_52     198
+Restaurant_421    198
+Restaurant_159    198
+Restaurant_147    198
+Restaurant_84     198
+Restaurant_241    198
+Restaurant_423    198
+Restaurant_297    198
+Restaurant_41     197
+Restaurant_233    197
+Restaurant_483    197
+Restaurant_116    197
+Restaurant_104    197
+Restaurant_72     197
+Restaurant_482    197
+Restaurant_324    197
+Restaurant_251    197
+Restaurant_283    197
+Restaurant_343    197
+Restaurant_301    197
+Restaurant_28     197
+Restaurant_223    197
+Restaurant_44     197
+Restaurant_495    196
+Restaurant_391    196
+Restaurant_150    196
+Restaurant_123    196
+Restaurant_459    196
+Restaurant_386    196
+Restaurant_279    196
+Restaurant_168    196
+Restaurant_425    196
+Restaurant_431    196
+Restaurant_273    196
+Restaurant_14     196
+Restaurant_24     196
+Restaurant_171    196
+Restaurant_485    196
+Restaurant_394    196
+Restaurant_80     196
+Restaurant_357    196
+Restaurant_7      196
+Restaurant_497    195
+Restaurant_492    195
+Restaurant_372    195
+Restaurant_393    195
+Restaurant_281    195
+Restaurant_230    195
+Restaurant_38     195
+Restaurant_243    195
+Restaurant_416    195
+Restaurant_406    195
+Restaurant_50     195
+Restaurant_258    194
+Restaurant_25     194
+Restaurant_131    194
+Restaurant_356    194
+Restaurant_432    194
+Restaurant_97     194
+Restaurant_110    194
+Restaurant_239    194
+Restaurant_60     194
+Restaurant_68     194
+Restaurant_137    194
+Restaurant_190    194
+Restaurant_156    194
+Restaurant_299    194
+Restaurant_352    194
+Restaurant_135    194
+Restaurant_242    194
+Restaurant_267    194
+Restaurant_500    193
+Restaurant_161    193
+Restaurant_253    193
+Restaurant_186    193
+Restaurant_465    193
+Restaurant_366    193
+Restaurant_194    193
+Restaurant_62     193
+Restaurant_63     193
+Restaurant_1      193
+Restaurant_53     193
+Restaurant_384    193
+Restaurant_272    193
+Restaurant_314    193
+Restaurant_303    193
+Restaurant_229    192
+Restaurant_321    192
+Restaurant_32     192
+Restaurant_204    192
+Restaurant_108    192
+Restaurant_126    192
+Restaurant_26     192
+Restaurant_379    192
+Restaurant_385    192
+Restaurant_197    192
+Restaurant_210    192
+Restaurant_222    192
+Restaurant_387    191
+Restaurant_373    191
+Restaurant_480    191
+Restaurant_170    191
+Restaurant_55     191
+Restaurant_488    191
+Restaurant_18     191
+Restaurant_252    191
+Restaurant_107    191
+Restaurant_86     191
+Restaurant_91     191
+Restaurant_284    191
+Restaurant_155    190
+Restaurant_138    190
+Restaurant_296    190
+Restaurant_360    190
+Restaurant_329    190
+Restaurant_69     190
+Restaurant_330    190
+Restaurant_481    190
+Restaurant_381    190
+Restaurant_58     190
+Restaurant_216    190
+Restaurant_468    190
+Restaurant_491    190
+Restaurant_40     189
+Restaurant_415    189
+Restaurant_466    189
+Restaurant_319    189
+Restaurant_235    189
+Restaurant_274    189
+Restaurant_358    189
+Restaurant_75     189
+Restaurant_57     188
+Restaurant_99     188
+Restaurant_98     188
+Restaurant_317    188
+Restaurant_20     188
+Restaurant_198    188
+Restaurant_66     187
+Restaurant_443    187
+Restaurant_31     187
+Restaurant_414    187
+Restaurant_12     187
+Restaurant_54     187
+Restaurant_112    187
+Restaurant_27     187
+Restaurant_342    186
+Restaurant_454    186
+Restaurant_403    186
+Restaurant_3      186
+Restaurant_484    186
+Restaurant_354    186
+Restaurant_134    186
+Restaurant_61     186
+Restaurant_73     186
+Restaurant_401    186
+Restaurant_178    185
+Restaurant_276    185
+Restaurant_21     185
+Restaurant_445    185
+Restaurant_336    185
+Restaurant_88     184
+Restaurant_207    184
+Restaurant_64     184
+Restaurant_462    184
+Restaurant_323    184
+Restaurant_405    184
+Restaurant_441    184
+Restaurant_117    183
+Restaurant_471    183
+Restaurant_362    183
+Restaurant_8      183
+Restaurant_265    183
+Restaurant_392    183
+Restaurant_165    183
+Restaurant_183    183
+Restaurant_365    183
+Restaurant_164    183
+Restaurant_419    182
+Restaurant_302    182
+Restaurant_293    182
+Restaurant_172    182
+Restaurant_458    182
+Restaurant_259    182
+Restaurant_162    182
+Restaurant_464    182
+Restaurant_411    182
+Restaurant_472    182
+Restaurant_292    182
+Restaurant_278    182
+Restaurant_331    182
+Restaurant_154    181
+Restaurant_23     181
+Restaurant_355    181
+Restaurant_455    180
+Restaurant_461    180
+Restaurant_203    180
+Restaurant_440    180
+Restaurant_169    179
+Restaurant_102    179
+Restaurant_361    179
+Restaurant_167    179
+Restaurant_224    179
+Restaurant_125    179
+Restaurant_219    178
+Restaurant_101    178
+Restaurant_83     178
+Restaurant_250    177
+Restaurant_232    177
+Restaurant_449    176
+Restaurant_456    176
+Restaurant_396    176
+Restaurant_119    176
+Restaurant_280    176
+Restaurant_246    176
+Restaurant_477    176
+Restaurant_318    175
+Restaurant_254    175
+Restaurant_429    174
+Restaurant_269    172
+Restaurant_255    172
+Restaurant_442    169
+Restaurant_268    167
+Restaurant_109    167
+Restaurant_376    167
+Restaurant_81     166
+Restaurant_473    165
+Restaurant_311    164
+Restaurant_288    163
+Restaurant_290    158
+Restaurant_398    157
+Restaurant_231    153
+
+Restaurant_Name - Percentage Distribution:
+Restaurant_Name
+Restaurant_450    0.25%
+Restaurant_309    0.24%
+Restaurant_144    0.24%
+Restaurant_74     0.24%
+Restaurant_435    0.23%
+Restaurant_291    0.23%
+Restaurant_221    0.23%
+Restaurant_338    0.23%
+Restaurant_87     0.23%
+Restaurant_346    0.23%
+Restaurant_103    0.23%
+Restaurant_453    0.23%
+Restaurant_332    0.23%
+Restaurant_422    0.23%
+Restaurant_271    0.23%
+Restaurant_470    0.23%
+Restaurant_407    0.23%
+Restaurant_76     0.23%
+Restaurant_270    0.23%
+Restaurant_367    0.23%
+Restaurant_71     0.23%
+Restaurant_467    0.23%
+Restaurant_382    0.22%
+Restaurant_234    0.22%
+Restaurant_308    0.22%
+Restaurant_19     0.22%
+Restaurant_184    0.22%
+Restaurant_47     0.22%
+Restaurant_428    0.22%
+Restaurant_260    0.22%
+Restaurant_149    0.22%
+Restaurant_256    0.22%
+Restaurant_377    0.22%
+Restaurant_175    0.22%
+Restaurant_15     0.22%
+Restaurant_240    0.22%
+Restaurant_452    0.22%
+Restaurant_200    0.22%
+Restaurant_341    0.22%
+Restaurant_400    0.22%
+Restaurant_340    0.22%
+Restaurant_180    0.22%
+Restaurant_368    0.22%
+Restaurant_225    0.22%
+Restaurant_389    0.22%
+Restaurant_208    0.22%
+Restaurant_439    0.22%
+Restaurant_446    0.22%
+Restaurant_199    0.22%
+Restaurant_89     0.22%
+Restaurant_475    0.22%
+Restaurant_457    0.22%
+Restaurant_46     0.22%
+Restaurant_16     0.22%
+Restaurant_285    0.22%
+Restaurant_479    0.22%
+Restaurant_166    0.22%
+Restaurant_120    0.22%
+Restaurant_212    0.22%
+Restaurant_409    0.22%
+Restaurant_213    0.22%
+Restaurant_90     0.22%
+Restaurant_438    0.22%
+Restaurant_412    0.22%
+Restaurant_214    0.22%
+Restaurant_196    0.22%
+Restaurant_45     0.22%
+Restaurant_177    0.22%
+Restaurant_77     0.22%
+Restaurant_327    0.22%
+Restaurant_380    0.22%
+Restaurant_93     0.22%
+Restaurant_182    0.22%
+Restaurant_227    0.21%
+Restaurant_189    0.21%
+Restaurant_313    0.21%
+Restaurant_140    0.21%
+Restaurant_312    0.21%
+Restaurant_257    0.21%
+Restaurant_304    0.21%
+Restaurant_364    0.21%
+Restaurant_37     0.21%
+Restaurant_289    0.21%
+Restaurant_476    0.21%
+Restaurant_427    0.21%
+Restaurant_105    0.21%
+Restaurant_187    0.21%
+Restaurant_245    0.21%
+Restaurant_350    0.21%
+Restaurant_244    0.21%
+Restaurant_215    0.21%
+Restaurant_261    0.21%
+Restaurant_397    0.21%
+Restaurant_395    0.21%
+Restaurant_146    0.21%
+Restaurant_67     0.21%
+Restaurant_157    0.21%
+Restaurant_59     0.21%
+Restaurant_326    0.21%
+Restaurant_106    0.21%
+Restaurant_209    0.21%
+Restaurant_426    0.21%
+Restaurant_33     0.21%
+Restaurant_388    0.21%
+Restaurant_248    0.21%
+Restaurant_490    0.21%
+Restaurant_124    0.21%
+Restaurant_493    0.21%
+Restaurant_277    0.21%
+Restaurant_498    0.21%
+Restaurant_447    0.21%
+Restaurant_322    0.21%
+Restaurant_39     0.21%
+Restaurant_70     0.21%
+Restaurant_451    0.21%
+Restaurant_133    0.21%
+Restaurant_49     0.21%
+Restaurant_130    0.21%
+Restaurant_344    0.21%
+Restaurant_295    0.21%
+Restaurant_43     0.21%
+Restaurant_122    0.21%
+Restaurant_173    0.21%
+Restaurant_298    0.21%
+Restaurant_325    0.21%
+Restaurant_176    0.21%
+Restaurant_402    0.21%
+Restaurant_316    0.21%
+Restaurant_201    0.21%
+Restaurant_334    0.21%
+Restaurant_335    0.21%
+Restaurant_220    0.21%
+Restaurant_6      0.21%
+Restaurant_237    0.21%
+Restaurant_238    0.21%
+Restaurant_420    0.21%
+Restaurant_474    0.21%
+Restaurant_320    0.21%
+Restaurant_437    0.21%
+Restaurant_48     0.21%
+Restaurant_275    0.21%
+Restaurant_143    0.21%
+Restaurant_211    0.21%
+Restaurant_13     0.21%
+Restaurant_29     0.21%
+Restaurant_328    0.21%
+Restaurant_9      0.21%
+Restaurant_56     0.21%
+Restaurant_139    0.21%
+Restaurant_148    0.21%
+Restaurant_353    0.21%
+Restaurant_444    0.21%
+Restaurant_228    0.21%
+Restaurant_193    0.21%
+Restaurant_294    0.21%
+Restaurant_339    0.21%
+Restaurant_434    0.21%
+Restaurant_383    0.21%
+Restaurant_300    0.21%
+Restaurant_191    0.21%
+Restaurant_195    0.21%
+Restaurant_249    0.21%
+Restaurant_4      0.21%
+Restaurant_10     0.21%
+Restaurant_142    0.21%
+Restaurant_349    0.21%
+Restaurant_192    0.21%
+Restaurant_206    0.21%
+Restaurant_128    0.21%
+Restaurant_333    0.21%
+Restaurant_374     0.2%
+Restaurant_5       0.2%
+Restaurant_174     0.2%
+Restaurant_113     0.2%
+Restaurant_266     0.2%
+Restaurant_95      0.2%
+Restaurant_469     0.2%
+Restaurant_181     0.2%
+Restaurant_92      0.2%
+Restaurant_460     0.2%
+Restaurant_306     0.2%
+Restaurant_11      0.2%
+Restaurant_375     0.2%
+Restaurant_188     0.2%
+Restaurant_487     0.2%
+Restaurant_22      0.2%
+Restaurant_35      0.2%
+Restaurant_363     0.2%
+Restaurant_202     0.2%
+Restaurant_264     0.2%
+Restaurant_132     0.2%
+Restaurant_436     0.2%
+Restaurant_152     0.2%
+Restaurant_282     0.2%
+Restaurant_315     0.2%
+Restaurant_310     0.2%
+Restaurant_153     0.2%
+Restaurant_499     0.2%
+Restaurant_2       0.2%
+Restaurant_96      0.2%
+Restaurant_418     0.2%
+Restaurant_65      0.2%
+Restaurant_78      0.2%
+Restaurant_371     0.2%
+Restaurant_145     0.2%
+Restaurant_226     0.2%
+Restaurant_399     0.2%
+Restaurant_348     0.2%
+Restaurant_94      0.2%
+Restaurant_305     0.2%
+Restaurant_370     0.2%
+Restaurant_141     0.2%
+Restaurant_486     0.2%
+Restaurant_42      0.2%
+Restaurant_496     0.2%
+Restaurant_494     0.2%
+Restaurant_34      0.2%
+Restaurant_217     0.2%
+Restaurant_111     0.2%
+Restaurant_129     0.2%
+Restaurant_136     0.2%
+Restaurant_151     0.2%
+Restaurant_351     0.2%
+Restaurant_205     0.2%
+Restaurant_359     0.2%
+Restaurant_424     0.2%
+Restaurant_337     0.2%
+Restaurant_347     0.2%
+Restaurant_30      0.2%
+Restaurant_489     0.2%
+Restaurant_51      0.2%
+Restaurant_127     0.2%
+Restaurant_85      0.2%
+Restaurant_448     0.2%
+Restaurant_114     0.2%
+Restaurant_287     0.2%
+Restaurant_218     0.2%
+Restaurant_263     0.2%
+Restaurant_100     0.2%
+Restaurant_121     0.2%
+Restaurant_408     0.2%
+Restaurant_430     0.2%
+Restaurant_433     0.2%
+Restaurant_390     0.2%
+Restaurant_115     0.2%
+Restaurant_410     0.2%
+Restaurant_369     0.2%
+Restaurant_345     0.2%
+Restaurant_82      0.2%
+Restaurant_404     0.2%
+Restaurant_378     0.2%
+Restaurant_236     0.2%
+Restaurant_307     0.2%
+Restaurant_36      0.2%
+Restaurant_478     0.2%
+Restaurant_118     0.2%
+Restaurant_417     0.2%
+Restaurant_185     0.2%
+Restaurant_463     0.2%
+Restaurant_163     0.2%
+Restaurant_158     0.2%
+Restaurant_286     0.2%
+Restaurant_160     0.2%
+Restaurant_79      0.2%
+Restaurant_179     0.2%
+Restaurant_247     0.2%
+Restaurant_17      0.2%
+Restaurant_262     0.2%
+Restaurant_413     0.2%
+Restaurant_52      0.2%
+Restaurant_421     0.2%
+Restaurant_159     0.2%
+Restaurant_147     0.2%
+Restaurant_84      0.2%
+Restaurant_241     0.2%
+Restaurant_423     0.2%
+Restaurant_297     0.2%
+Restaurant_41      0.2%
+Restaurant_233     0.2%
+Restaurant_483     0.2%
+Restaurant_116     0.2%
+Restaurant_104     0.2%
+Restaurant_72      0.2%
+Restaurant_482     0.2%
+Restaurant_324     0.2%
+Restaurant_251     0.2%
+Restaurant_283     0.2%
+Restaurant_343     0.2%
+Restaurant_301     0.2%
+Restaurant_28      0.2%
+Restaurant_223     0.2%
+Restaurant_44      0.2%
+Restaurant_495     0.2%
+Restaurant_391     0.2%
+Restaurant_150     0.2%
+Restaurant_123     0.2%
+Restaurant_459     0.2%
+Restaurant_386     0.2%
+Restaurant_279     0.2%
+Restaurant_168     0.2%
+Restaurant_425     0.2%
+Restaurant_431     0.2%
+Restaurant_273     0.2%
+Restaurant_14      0.2%
+Restaurant_24      0.2%
+Restaurant_171     0.2%
+Restaurant_485     0.2%
+Restaurant_394     0.2%
+Restaurant_80      0.2%
+Restaurant_357     0.2%
+Restaurant_7       0.2%
+Restaurant_497    0.19%
+Restaurant_492    0.19%
+Restaurant_372    0.19%
+Restaurant_393    0.19%
+Restaurant_281    0.19%
+Restaurant_230    0.19%
+Restaurant_38     0.19%
+Restaurant_243    0.19%
+Restaurant_416    0.19%
+Restaurant_406    0.19%
+Restaurant_50     0.19%
+Restaurant_258    0.19%
+Restaurant_25     0.19%
+Restaurant_131    0.19%
+Restaurant_356    0.19%
+Restaurant_432    0.19%
+Restaurant_97     0.19%
+Restaurant_110    0.19%
+Restaurant_239    0.19%
+Restaurant_60     0.19%
+Restaurant_68     0.19%
+Restaurant_137    0.19%
+Restaurant_190    0.19%
+Restaurant_156    0.19%
+Restaurant_299    0.19%
+Restaurant_352    0.19%
+Restaurant_135    0.19%
+Restaurant_242    0.19%
+Restaurant_267    0.19%
+Restaurant_500    0.19%
+Restaurant_161    0.19%
+Restaurant_253    0.19%
+Restaurant_186    0.19%
+Restaurant_465    0.19%
+Restaurant_366    0.19%
+Restaurant_194    0.19%
+Restaurant_62     0.19%
+Restaurant_63     0.19%
+Restaurant_1      0.19%
+Restaurant_53     0.19%
+Restaurant_384    0.19%
+Restaurant_272    0.19%
+Restaurant_314    0.19%
+Restaurant_303    0.19%
+Restaurant_229    0.19%
+Restaurant_321    0.19%
+Restaurant_32     0.19%
+Restaurant_204    0.19%
+Restaurant_108    0.19%
+Restaurant_126    0.19%
+Restaurant_26     0.19%
+Restaurant_379    0.19%
+Restaurant_385    0.19%
+Restaurant_197    0.19%
+Restaurant_210    0.19%
+Restaurant_222    0.19%
+Restaurant_387    0.19%
+Restaurant_373    0.19%
+Restaurant_480    0.19%
+Restaurant_170    0.19%
+Restaurant_55     0.19%
+Restaurant_488    0.19%
+Restaurant_18     0.19%
+Restaurant_252    0.19%
+Restaurant_107    0.19%
+Restaurant_86     0.19%
+Restaurant_91     0.19%
+Restaurant_284    0.19%
+Restaurant_155    0.19%
+Restaurant_138    0.19%
+Restaurant_296    0.19%
+Restaurant_360    0.19%
+Restaurant_329    0.19%
+Restaurant_69     0.19%
+Restaurant_330    0.19%
+Restaurant_481    0.19%
+Restaurant_381    0.19%
+Restaurant_58     0.19%
+Restaurant_216    0.19%
+Restaurant_468    0.19%
+Restaurant_491    0.19%
+Restaurant_40     0.19%
+Restaurant_415    0.19%
+Restaurant_466    0.19%
+Restaurant_319    0.19%
+Restaurant_235    0.19%
+Restaurant_274    0.19%
+Restaurant_358    0.19%
+Restaurant_75     0.19%
+Restaurant_57     0.19%
+Restaurant_99     0.19%
+Restaurant_98     0.19%
+Restaurant_317    0.19%
+Restaurant_20     0.19%
+Restaurant_198    0.19%
+Restaurant_66     0.19%
+Restaurant_443    0.19%
+Restaurant_31     0.19%
+Restaurant_414    0.19%
+Restaurant_12     0.19%
+Restaurant_54     0.19%
+Restaurant_112    0.19%
+Restaurant_27     0.19%
+Restaurant_342    0.19%
+Restaurant_454    0.19%
+Restaurant_403    0.19%
+Restaurant_3      0.19%
+Restaurant_484    0.19%
+Restaurant_354    0.19%
+Restaurant_134    0.19%
+Restaurant_61     0.19%
+Restaurant_73     0.19%
+Restaurant_401    0.19%
+Restaurant_178    0.18%
+Restaurant_276    0.18%
+Restaurant_21     0.18%
+Restaurant_445    0.18%
+Restaurant_336    0.18%
+Restaurant_88     0.18%
+Restaurant_207    0.18%
+Restaurant_64     0.18%
+Restaurant_462    0.18%
+Restaurant_323    0.18%
+Restaurant_405    0.18%
+Restaurant_441    0.18%
+Restaurant_117    0.18%
+Restaurant_471    0.18%
+Restaurant_362    0.18%
+Restaurant_8      0.18%
+Restaurant_265    0.18%
+Restaurant_392    0.18%
+Restaurant_165    0.18%
+Restaurant_183    0.18%
+Restaurant_365    0.18%
+Restaurant_164    0.18%
+Restaurant_419    0.18%
+Restaurant_302    0.18%
+Restaurant_293    0.18%
+Restaurant_172    0.18%
+Restaurant_458    0.18%
+Restaurant_259    0.18%
+Restaurant_162    0.18%
+Restaurant_464    0.18%
+Restaurant_411    0.18%
+Restaurant_472    0.18%
+Restaurant_292    0.18%
+Restaurant_278    0.18%
+Restaurant_331    0.18%
+Restaurant_154    0.18%
+Restaurant_23     0.18%
+Restaurant_355    0.18%
+Restaurant_455    0.18%
+Restaurant_461    0.18%
+Restaurant_203    0.18%
+Restaurant_440    0.18%
+Restaurant_169    0.18%
+Restaurant_102    0.18%
+Restaurant_361    0.18%
+Restaurant_167    0.18%
+Restaurant_224    0.18%
+Restaurant_125    0.18%
+Restaurant_219    0.18%
+Restaurant_101    0.18%
+Restaurant_83     0.18%
+Restaurant_250    0.18%
+Restaurant_232    0.18%
+Restaurant_449    0.18%
+Restaurant_456    0.18%
+Restaurant_396    0.18%
+Restaurant_119    0.18%
+Restaurant_280    0.18%
+Restaurant_246    0.18%
+Restaurant_477    0.18%
+Restaurant_318    0.18%
+Restaurant_254    0.18%
+Restaurant_429    0.17%
+Restaurant_269    0.17%
+Restaurant_255    0.17%
+Restaurant_442    0.17%
+Restaurant_268    0.17%
+Restaurant_109    0.17%
+Restaurant_376    0.17%
+Restaurant_81     0.17%
+Restaurant_473    0.16%
+Restaurant_311    0.16%
+Restaurant_288    0.16%
+Restaurant_290    0.16%
+Restaurant_398    0.16%
+Restaurant_231    0.15%
+
+Cuisine_Type - Value Counts:
+Cuisine_Type
+NaN        16885
+Indian     16685
+Arabian    16658
+Chinese    16651
+Mexican    16602
+Italian    16519
+
+Cuisine_Type - Percentage Distribution:
+Cuisine_Type
+NaN        16.89%
+Indian     16.68%
+Arabian    16.66%
+Chinese    16.65%
+Mexican     16.6%
+Italian    16.52%
+
+Payment_Mode - Value Counts:
+Payment_Mode
+Card      20094
+Wallet    20086
+COD       19977
+UPI       19932
+NaN       19911
+
+Payment_Mode - Percentage Distribution:
+Payment_Mode
+Card      20.09%
+Wallet    20.09%
+COD       19.98%
+UPI       19.93%
+NaN       19.91%
+
+Order_Status - Value Counts:
+Order_Status
+Delivered    84964
+Cancelled    15036
+
+Order_Status - Percentage Distribution:
+Order_Status
+Delivered    84.96%
+Cancelled    15.04%
+
+Cancellation_Reason - Value Counts:
+Cancellation_Reason
+NaN                   90969
+Late Delivery          3059
+Customer Cancelled     2993
+Restaurant Issue       2979
+
+Cancellation_Reason - Percentage Distribution:
+Cancellation_Reason
+NaN                   90.97%
+Late Delivery          3.06%
+Customer Cancelled     2.99%
+Restaurant Issue       2.98%
+
+Order_Day - Value Counts:
+Order_Day
+Weekday    71370
+Weekend    28630
+
+Order_Day - Percentage Distribution:
+Order_Day
+Weekday    71.37%
+Weekend    28.63%
+
+Peak_Hour - Value Counts:
+Peak_Hour
+False    33585
+True     33453
+NaN      32962
+
+Peak_Hour - Percentage Distribution:
+Peak_Hour
+False    33.58%
+True     33.45%
+NaN      32.96%
+
+================================================================================
+SECTION 6: DATE AND TIME INSPECTION
+================================================================================
+
+1. ORDER DATE
+--------------------------------------------------------------------------------
+Missing or invalid dates: 1014
+Earliest Order Date: 2024-01-01 00:00:00
+Latest Order Date: 2024-12-30 00:00:00
+
+2. ORDER TIME
+--------------------------------------------------------------------------------
+Missing Order_Time values: 1998
+
+Sample Order_Time values:
+Order_Time
+0:00    98002
+NaN      1998
+
+================================================================================
+SECTION 7: FINAL DATA UNDERSTANDING SUMMARY
+================================================================================
+Total Records: 100000
+Total Features: 25
+Total Missing Cells: 461190
+Total Duplicate Rows: 0
+Total Columns Containing Missing Values: 16
+
+Data Understanding Completed Successfully.

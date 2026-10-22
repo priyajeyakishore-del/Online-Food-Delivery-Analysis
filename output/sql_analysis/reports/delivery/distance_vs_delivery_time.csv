@@ -1,0 +1,5 @@
+Distance_Category,Delivered_Orders,Average_Distance_km,Average_Delivery_Time_Min,Median_Delivery_Time_Min
+0–2 km,3157,1.49,126.21,120.0
+2–5 km,9498,3.49,123.47,120.0
+5–10 km,44096,9.09,124.82,120.0
+Above 10 km,28213,27.47,125.6,120.0
